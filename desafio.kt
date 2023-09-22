@@ -1,8 +1,10 @@
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
+enum class Nivel { 
+    INICIANTE, INTERMEDIARIO, AVANÇADO 
+}
 
 class Usuario(val nome: String)
 
-data class ConteudoEducacional(val nome: String, val curso: String, val duracao: Int = 60)
+data class ConteudoEducacional(val nome: String, val curso: String, val duracao: Int)
 
 data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, val nivel: Nivel) {
 
@@ -19,7 +21,7 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
     }
     fun mostrarConteudo() {
     	for (conteudo in conteudos) {
-    		println(conteudo.nome)
+    		println("${conteudo.nome}, ${conteudo.duracao} horas")
     	}
     }
         
@@ -33,10 +35,10 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
 fun main() {
     
     val listaConteudo: List<ConteudoEducacional> = listOf(
-            ConteudoEducacional("Lógica de Programação", "Java"),
-            ConteudoEducacional("Linguagem de Programação", "Java"),
-            ConteudoEducacional("Orientação a Objetos", "Kotlin"),
-            ConteudoEducacional("Arquiteturas de Software", "Fundamentos Software"))
+            ConteudoEducacional("Lógica de Programação", "Java", 20),
+            ConteudoEducacional("Linguagem de Programação", "Java", 40),
+            ConteudoEducacional("Orientação a Objetos", "Kotlin", 20),
+            ConteudoEducacional("Arquiteturas de Software", "Fundamentos Software", 60))
     
     val jonathas = Usuario("Jonathas")
     val guilherme = Usuario("Gulherme")
